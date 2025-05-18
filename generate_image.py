@@ -1,6 +1,6 @@
 from diffusers import StableDiffusionPipeline
 import torch
-from PIL import Images
+from PIL import Image
 import os
 
 

@@ -1,12 +1,9 @@
 from diffusers import StableDiffusionPipeline
 import torch
-from PIL import Image
+from PIL import Images
 import os
 
-# ✅ Optional: Set Hugging Face token using environment variable (safer than use_auth_token=True)
-# os.environ["HUGGINGFACE_HUB_TOKEN"] = "your_token_here"
 
-# Get prompt from user
 prompt = input("Enter your image description (prompt): ")
 
 # Model config
@@ -14,11 +11,10 @@ model_id = "runwayml/stable-diffusion-v1-5"
 device = "cuda" if torch.cuda.is_available() else "cpu"
 dtype = torch.float16 if torch.cuda.is_available() else torch.float32
 
-# Load pipeline (don't use deprecated use_auth_token=True)
 pipe = StableDiffusionPipeline.from_pretrained(
     model_id,
     torch_dtype=dtype,
-    use_safetensors=True  # use faster and safer model weights
+    use_safetensors=True  
 ).to(device)
 
 # Generate image
